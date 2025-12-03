@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Fondo gris claro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#barra-superior {
+    width: 100%;
+    max-width: 900px; /* Ancho máximo similar al diseño */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    margin-top: 20px;
+}
+
+#menu-principal {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    flex-grow: 1; /* Para centrarlo */
+}
+
+#icono-foto {
+    font-size: 2em;
+    padding: 5px;
+    border: 1px solid #ccc;
+    background-color: #d0d0d0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* --- Menú de Navegación --- */
+#menu-nav {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 5px;
+}
+
+#menu-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+
+#menu-nav li a {
+    display: block;
+    padding: 8px 15px;
+    margin-right: 5px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9em;
+}
+
+/* --- Contenido Principal --- */
+main {
+    width: 100%;
+    max-width: 900px;
+    background-color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Para empujar el footer hacia abajo */
+}
+
+#contenedor-imagen {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+/* La sección clave para la imagen */
+#imagen-principal {
+    height: 200px; /* Altura de la imagen */
+    background-image: url('placeholder-imagen.jpg'); /* <<-- ESTA ES LA IMAGEN QUE PUEDES CAMBIAR */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* --- Destacados / Proyectos --- */
+#destacados h3 {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+#destacados hr {
+    width: 80%;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+#contenedor-proyectos {
+    display: flex;
+    gap: 15px;
+}
+
+.proyecto {
+    background-color: #aed9d9; /* Color turquesa/azul claro */
+    color: #333;
+    border: 1px solid #99c0c0;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+/* --- Footer --- */
+footer {
+    width: 100%;
+    max-width: 900px;
+    border-top: 1px solid #ccc;
+    padding: 10px 0;
+    text-align: right;
+    font-size: 0.8em;
+    color: #555;
+}
