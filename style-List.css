@@ -3,7 +3,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0; /* Elimina el margen predeterminado del cuerpo */
     padding: 0;
-    background-color: #f4f4f4; /* Fondo suave para la página */
+    background-color: #ffffff; /* Fondo blanco para toda la página */
+    color: #000000; /* Texto negro para contraste */
     display: flex; /* Centra el contenido si se desea */
     flex-direction: column;
     align-items: center; /* Centra el contenido principal */
@@ -17,9 +18,9 @@ body {
     max-width: 1000px; /* Ancho máximo para pantallas grandes */
     margin: 10px auto; /* Espacio vertical y centrado horizontal */
     padding: 20px;
-    background-color: white;
+    background-color: #ffffff; /* Fondo blanco para los bloques principales */
     box-sizing: border-box; /* Incluye padding y borde en el ancho/alto */
-    border: 1px solid #ccc; /* Borde simple para todos los bloques principales */
+    border: 1px solid #f2bfbf; /* Borde sutil rojo para todos los bloques principales */
 }
 
 /* --- 1. INDEX (Header) --- */
@@ -60,11 +61,9 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    border-radius: 5px;
-    z-index: 10;
+    color: #000000; /* Texto negro para el título de la imagen */
+    background: transparent; /* Sin fondo para el título de la imagen */
+    padding: 0; /* Sin padding adicional */
 }
 
 /* --- 3. Proyectos (Section) --- */
@@ -97,10 +96,10 @@ body {
 
 /* Bloque individual de Proyecto 1, Projecte 2, etc. */
 .proyecto-card {
-    border: 1px solid #ccc;
+    border: 1px solid #f2bfbf; /* Borde sutil rojo para las tarjetas de proyecto */
     padding: 15px;
     margin: 0; /* Se usa 'gap' en el padre para el espaciado */
-    background-color: #fff;
+    background-color: #ffffff; /* Fondo blanco para las tarjetas de proyecto */
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra ligera */
     width: 200px; /* Ancho fijo para los bloques de proyecto como en el diseño */
@@ -121,5 +120,6 @@ footer {
     width: 90%;
     max-width: 1000px;
     margin: 20px auto 10px;
-    text
+    color: #000000; /* Texto negro para el pie de página */
+    text-align: center;
 }

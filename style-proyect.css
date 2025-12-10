@@ -105,16 +105,29 @@ body {
     border-top: 1px solid var(--accent-border);
 }
 
+/* Ensure anchors everywhere are black and no underline */
+a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+/* Footer link safety */
 #footer a {
     color: var(--text-color);
     text-decoration: none;
-    font-weight: normal;
 }
 
-/* Hover accents: very faint red */
+/* Keep hover subtle and pale red */
 .box:hover,
 .content-box:hover {
     background-color: var(--accent-hover);
+}
+
+/* Make sure heading/text inside boxes is black (in case some browser defaults override) */
+.box,
+.content-box,
+.page-container {
+    color: var(--text-color);
 }
 
 /* Media query para hacerlo más responsivo en pantallas pequeñas */
