@@ -1,13 +1,22 @@
-/* Estilos Generales para el tono oscuro y diseño fino */
+/* Estilos Generales para el tono claro y diseño fino */
+
+/* Very light reddish accent + black text on white background */
+:root {
+    --bg-color: #ffffff;          /* main white background */
+    --panel-bg: #ffffff;          /* panels also white */
+    --accent-border: #f2bfbf;     /* subtle red for borders */
+    --accent-hover: #fff3f3;      /* very faint red hover */
+    --text-color: #000000;        /* black text */
+}
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
+    /* Fondo claro */
+    background-color: var(--bg-color);
+    /* Texto negro */
+    color: var(--text-color);
     padding: 20px;
-    /* Fondo oscuro */
-    background-color: #1a1a1a;
-    /* Texto claro */
-    color: #e0e0e0;
-    line-height: 1.6;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -18,18 +27,18 @@ body {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    /* Borde fino */
-    border: 1px solid #444;
+    /* Borde sutil en rojo claro */
+    border: 1px solid var(--accent-border);
     padding: 20px;
-    background-color: #252525; /* Un poco más claro que el body */
+    background-color: var(--panel-bg); /* Blanco */
     flex-grow: 1;
     box-sizing: border-box;
 }
 
 /* Estilo para todas las cajas (líneas y rectángulos) */
 .box {
-    /* Borde fino y gris */
-    border: 1px solid #555;
+    /* Borde sutil en rojo claro */
+    border: 1px solid var(--accent-border);
     padding: 10px;
     margin-bottom: 20px;
     display: flex;
@@ -39,8 +48,10 @@ body {
     font-weight: bold;
     font-size: 1.1em;
     letter-spacing: 1px;
-    /* Fondo ligeramente diferente */
-    background-color: #2c2c2c;
+    /* Fondo blanco */
+    background-color: var(--panel-bg);
+    /* Texto negro */
+    color: var(--text-color);
 }
 
 /* Estilos específicos de las secciones */
@@ -64,6 +75,7 @@ body {
     min-height: 300px;
 }
 
+/* Área de texto principal: negro y sin mayúsculas */
 #text-box {
     flex: 2; /* Ocupa más espacio que la imagen */
     /* Aquí puedes poner contenido real si lo deseas */
@@ -74,18 +86,35 @@ body {
     text-transform: none;
     line-height: 1.8;
     font-size: 1em;
+    color: var(--text-color);
+    background-color: var(--panel-bg);
 }
 
+/* Caja de imagen: blanco */
 #image-box {
     flex: 1; /* Ocupa menos espacio */
+    background-color: var(--panel-bg);
 }
 
 /* Footer (pie de página) */
 #footer {
     height: 40px;
     margin-top: auto; /* Empuja el footer hacia abajo */
-    background-color: #2c2c2c;
+    background-color: var(--panel-bg);
     margin-bottom: 0;
+    border-top: 1px solid var(--accent-border);
+}
+
+#footer a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: normal;
+}
+
+/* Hover accents: very faint red */
+.box:hover,
+.content-box:hover {
+    background-color: var(--accent-hover);
 }
 
 /* Media query para hacerlo más responsivo en pantallas pequeñas */

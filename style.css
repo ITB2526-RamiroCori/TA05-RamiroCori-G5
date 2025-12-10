@@ -1,8 +1,18 @@
+/* Subtle reddish accent + black text on white background */
+:root {
+    --accent-very-light: #fff1f1;    /* very pale red for backgrounds */
+    --accent-border: #f2b1b1;        /* slightly stronger for borders */
+    --accent-hover: #ffe6e6;         /* hover tint */
+    --text-color: #000000;           /* black text */
+    --bg-color: #ffffff;             /* main white background */
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0; /* Fondo gris claro */
+    background-color: var(--bg-color); /* white background */
+    color: var(--text-color);          /* black text */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,7 +29,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid var(--accent-border);
     padding-bottom: 8px;
     margin-top: 8px;
 }
@@ -35,8 +45,8 @@ body {
 #icono-foto {
     font-size: 2.2em;
     padding: 8px;
-    border: 1px solid #ccc;
-    background-color: #d0d0d0;
+    border: 1px solid var(--accent-border);
+    background-color: var(--accent-very-light);
     width: 56px;   /* larger icon box */
     height: 56px;  /* larger icon box */
     display: flex;
@@ -75,11 +85,11 @@ body {
     display: block;
     padding: 12px 18px; /* larger click/tap area */
     margin-right: 5px;
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
+    background-color: var(--bg-color);
+    border: 1px solid var(--accent-border);
     border-bottom: none;
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
     font-size: 1.1em;   /* bigger nav text */
 }
 
@@ -87,7 +97,8 @@ body {
 main {
     width: 100%;
     max-width: 1200px; /* wider main area */
-    background-color: white;
+    background-color: var(--bg-color);
+    border: 1px solid rgba(0,0,0,0.03);
     padding: 24px;     /* more breathing room for larger layout */
     box-sizing: border-box;
     margin-bottom: 8px;
@@ -95,7 +106,7 @@ main {
 }
 
 #contenedor-imagen {
-    border: 1px solid #ccc;
+    border: 1px solid var(--accent-border);
     padding: 8px;
     margin-bottom: 12px;
 }
@@ -109,8 +120,10 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    text-shadow: 1px 1px 2px black;
+
+    /* Make overlay text black (user requested black text) and remove heavy text shadow */
+    color: var(--text-color);
+    text-shadow: none;
 }
 
 /* --- Destacados / Proyectos --- */
@@ -134,22 +147,35 @@ main {
 }
 
 .proyecto {
-    background-color: #99c0c0; /* Color turquesa/azul claro */
-    color: #333;
-    border: 1px solid #99c0c0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--accent-border);
     padding: 14px 20px; /* larger buttons */
     cursor: pointer;
     font-size: 1.05em;  /* larger label text */
     border-radius: 8px;
 }
 
+/* project hover: light red tint */
+.proyecto:hover {
+    background-color: var(--accent-hover);
+}
+
+/* anchors inside buttons should inherit and not be underlined */
+.proyecto a {
+    color: inherit;
+    text-decoration: none;
+}
+
 /* --- Footer --- */
 footer {
     width: 100%;
     max-width: 1200px; /* match wider layout */
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--accent-border);
     padding: 12px 0;
     text-align: right;
     font-size: 0.95em; /* slightly larger footer text */
-    color: #555;
+    /* Ensure footer text is black per request */
+    color: var(--text-color);
+    background-color: var(--bg-color);
 }
