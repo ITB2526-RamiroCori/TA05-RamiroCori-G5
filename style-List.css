@@ -1,0 +1,125 @@
+/* --- Estilos Generales --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    padding: 0;
+    background-color: #f4f4f4; /* Fondo suave para la página */
+    display: flex; /* Centra el contenido si se desea */
+    flex-direction: column;
+    align-items: center; /* Centra el contenido principal */
+}
+
+/* Contenedor principal para limitar el ancho del diseño (opcional) */
+#index,
+#imagen-principal,
+#proyectos {
+    width: 90%; /* Ancho del contenido */
+    max-width: 1000px; /* Ancho máximo para pantallas grandes */
+    margin: 10px auto; /* Espacio vertical y centrado horizontal */
+    padding: 20px;
+    background-color: white;
+    box-sizing: border-box; /* Incluye padding y borde en el ancho/alto */
+    border: 1px solid #ccc; /* Borde simple para todos los bloques principales */
+}
+
+/* --- 1. INDEX (Header) --- */
+#index {
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 5px; /* Menos margen que otros bloques */
+}
+
+/* --- 2. IMAGEN (Main/Hero) --- */
+#imagen-principal {
+    min-height: 150px; /* Altura mínima para el rectángulo de IMAGEN */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* **CLAVE:** Oculta cualquier parte de la imagen que se salga */
+    padding: 0; /* Quitamos el padding interno para que la imagen lo ocupe todo */
+    margin-bottom: 5px;
+    border-radius: 10px; /* Borde más redondeado para el bloque principal */
+}
+
+.imagen-container {
+    width: 100%;
+    height: 100%;
+    position: relative; /* Para posicionar el texto "IMAGEN" si es necesario */
+}
+
+/* **CLAVE:** Estilo para que la imagen no se salga del contenedor */
+.imagen-container img {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    height: auto; /* Mantiene la proporción */
+    display: block;
+}
+
+/* Opcional: Estilo para el texto "IMAGEN" si se mantiene */
+#imagen-principal h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+/* --- 3. Proyectos (Section) --- */
+#proyectos {
+    border: none; /* Quitamos el borde general si solo queremos el borde en los proyectos */
+    padding: 20px 0; /* Ajustamos padding si el contenedor principal ya tiene fondo */
+    text-align: left;
+}
+
+#proyectos h3 {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 20px; /* Centra el título y da espacio abajo */
+    padding: 10px;
+    border: 1px solid #ccc; /* Borde para el rectángulo de "Proyectos" */
+    background-color: #eee;
+    box-sizing: border-box;
+    font-size: 1.2em;
+}
+
+/* Contenedor de la lista para organizar los bloques de proyecto */
+.proyectos-lista {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; /* Apila los proyectos verticalmente */
+    gap: 10px; /* Espacio entre los bloques de proyecto */
+}
+
+/* Bloque individual de Proyecto 1, Projecte 2, etc. */
+.proyecto-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 0; /* Se usa 'gap' en el padre para el espaciado */
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra ligera */
+    width: 200px; /* Ancho fijo para los bloques de proyecto como en el diseño */
+    height: 50px; /* Altura fija para los bloques de proyecto como en el diseño */
+    display: flex;
+    align-items: center; /* Centra el texto verticalmente */
+    justify-content: center; /* Centra el texto horizontalmente */
+    text-align: center;
+}
+
+.proyecto-card h4 {
+    margin: 0;
+    font-size: 1em;
+}
+
+/* --- Pie de página (Footer) --- */
+footer {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto 10px;
+    text
+}
