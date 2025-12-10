@@ -1,0 +1,242 @@
+/* --- RESET BÁSICO --- */
+:root{
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --accent-border: #f3cfcf;  /* very pale reddish border */
+    --accent-hover: #fff4f4;   /* very faint red hover */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* --- BARRA SUPERIOR (HEADER) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    border-bottom: 1px solid var(--accent-border);
+    background-color: var(--bg-color);
+    height: 80px;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-color);
+    text-transform: uppercase;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+/* --- BOTONES HEADER --- */
+.btn {
+    text-decoration: none;
+    padding: 12px 25px;
+    font-weight: bold;
+    color: var(--text-color);
+    border: 1px solid var(--accent-border);
+    border-radius: 5px;
+    font-size: 14px;
+    display: inline-block;
+    transition: all 0.2s ease;
+    background-color: var(--bg-color);
+    box-shadow: none;
+}
+
+.btn-blue {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--accent-border);
+}
+
+.btn-dark {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--accent-border);
+}
+
+.btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.main-content {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Estilo general para cajas tipo wireframe */
+.wireframe-box {
+    border: 1px solid var(--accent-border);
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    background-color: var(--bg-color);
+    padding: 20px; /* Espacio interno para que no se pegue el texto al borde */
+    box-sizing: border-box; /* Importante para que el padding no deforme la caja */
+}
+
+/* Caja "TEXTO" */
+.text-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+}
+
+/* --- ESTILOS DEL FORMULARIO (NUEVO) --- */
+
+/* Estilo de los fieldset (las cajas grandes del formulario) */
+.form-section {
+    border: 1px solid var(--accent-border);
+    margin-top: 30px;
+    position: relative;
+    padding-top: 25px;
+}
+
+/* El título de cada sección (DADES PERSONALS...) */
+.section-legend {
+    color: blue;
+    font-weight: bold;
+    padding: 0 10px;
+    background: var(--bg-color); /* Para tapar el borde */
+    position: absolute;
+    top: -12px;
+    left: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    color: black;
+    font-weight: normal;
+}
+
+.form-group label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Inputs Azules */
+.input-blue {
+    border: 1px solid var(--accent-border);
+    border-radius: 4px;
+    padding: 5px;
+    color: #555;
+    outline: none;
+}
+
+.input-blue::placeholder {
+    color: #aaa;
+}
+
+.full-width {
+    width: 100%;
+    max-width: 500px; /* Para que no se estire infinito */
+}
+
+/* Radio buttons y Checkboxes */
+.radio-group label, .form-group label {
+    margin-right: 15px;
+}
+
+/* --- ESTILOS PÁGINA INICIO (INDEX) --- */
+.hero-box {
+    width: 100%;
+    height: 200px;
+    border: 2px solid #333;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.hero-image-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #333;
+}
+
+.projects-container {
+    display: flex;
+    gap: 30px;
+}
+
+.project-box {
+    width: 200px;
+    height: 100px;
+    border: 1px solid var(--accent-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.project-box:hover {
+    background-color: #f2f2f2;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    color: #000;
+}
+
+/* Botón "ENVIAR" */
+.submit-box {
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    background-color: var(--bg-color);
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border: 1px solid var(--accent-border);
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.submit-box:hover {
+    background-color: var(--accent-hover);
+    color: var(--text-color);
+}
+
+/* --- FOOTER --- */
+.footer-box {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid var(--accent-border);
+    text-align: center;
+    font-weight: bold;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    padding-top: 18px;
+}
