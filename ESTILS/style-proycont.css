@@ -1,19 +1,33 @@
-.pdf-card {
-  width: 300px;
-  padding: 20px;
-  background: linear-gradient(135deg, #4f46e5, #9333ea);
-  color: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.3);
+:root {
+  --accent-red-very-light: rgba(220,38,38,0.06);
+  --accent-red-light: rgba(220,38,38,0.12);
+  --bg: #ffffff;
+  --text: #000000;
 }
 
-.pdf-card a {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 16px;
-  background: white;
-  color: #4f46e5;
+/* contenedor limpio para el PDF */
+.pdf-container {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;            /* ajustable según layout */
+  background: var(--bg);
+  border: 1px solid var(--accent-red-very-light);
   border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  display: block;
+}
+
+/* el iframe debe ocupar todo el contenedor sin bordes */
+.pdf-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  background: var(--bg);
+}
+
+/* responsivo: reducir altura mínima en pantallas pequeñas */
+@media (max-width: 900px) {
+  .pdf-container { min-height: 360px; }
 }

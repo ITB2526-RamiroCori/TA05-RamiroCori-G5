@@ -5,6 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recursos</title>
     <link rel="stylesheet" href="../ESTILS/style-proyect.css">
+
+    <!-- updated: estilos locales que solo afectan al #text-box y al .pdf-container -->
+    <style>
+      /* ...affects only this page region; minimal and safe */
+      #text-box {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        /* increased vertical space so the text/PDF area is longer for easier reading */
+        min-height: 700px;        /* was 480px -> increased to 700px */
+        box-sizing: border-box;
+        padding: 12px;
+        overflow: auto;           /* allow internal scrolling if content exceeds available space */
+      }
+
+      /* base pdf container (kept neutral) */
+      #text-box .pdf-container {
+        flex: 1 1 auto; /* fill remaining vertical space */
+        min-height: 0;  /* allow flex child to shrink correctly */
+        width: 100%;
+        background: #fff;
+        border: 1px solid rgba(220,38,38,0.06);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+        display: block;
+      }
+
+      /* iframe must occupy all of the container */
+      #text-box .pdf-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        background: #fff;
+      }
+
+      /* --- EDGERUNNERS VARIANT: apply only when the container has .edgerunners --- */
+      #text-box .pdf-container.edgerunners {
+        background: linear-gradient(180deg, #0b0b10 0%, #130615 60%); /* dark base */
+        border-radius: 10px;
+        padding: 10px; /* inner frame padding */
+        box-shadow:
+          0 10px 30px rgba(0,0,0,0.6),
+          0 0 24px rgba(255,40,100,0.06); /* soft neon halo */
+        position: relative;
+        border: 1px solid rgba(255,40,100,0.14);
+        overflow: hidden;
+      }
+
+      /* thin neon top accent */
+      #text-box .pdf-container.edgerunners::before {
+        content: "";
+        position: absolute;
+        left: -10%;
+        top: 6px;
+        width: 120%;
+        height: 3px;
+        background: linear-gradient(90deg, rgba(255,31,122,0.95), rgba(255,183,107,0.9), rgba(92,246,255,0.7));
+        filter: blur(6px);
+        opacity: 0.95;
+        pointer-events: none;
+      }
+
+      /* subtle animated scanline for motion (very light) */
+      #text-box .pdf-container.edgerunners::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(255,255,255,0.00) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.00) 100%);
+        mix-blend-mode: overlay;
+        pointer-events: none;
+      }
+
+      /* iframe inside edgerunners: keep full size and add rounded inner corner */
+      #text-box .pdf-container.edgerunners iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        border-radius: 6px;
+        background: transparent;
+      }
+
+      /* accent glow on hover (subtle) */
+      #text-box .pdf-container.edgerunners:hover {
+        box-shadow:
+          0 18px 40px rgba(0,0,0,0.6),
+          0 0 40px rgba(255,31,122,0.08),
+          inset 0 0 18px rgba(255,31,122,0.03);
+        transform: translateY(-2px);
+        transition: box-shadow .25s ease, transform .25s ease;
+      }
+
+      /* responsive adjustments */
+      @media (max-width: 900px) {
+        #text-box { min-height: 480px; padding: 8px; } /* was 320px -> kept a comfortable mobile height */
+        #text-box .pdf-container { min-height: 320px; }
+        #text-box .pdf-container.edgerunners::before { top: 4px; height: 2px; }
+      }
+    </style>
 </head>
 <body>
     <div class="page-container">
@@ -19,10 +120,11 @@
 
         <div class="content-area">
             <div class="box content-box" id="text-box">
-                TEXT (Área de contenido principal)
                 <br><br>
-                <div class="ESTILS/style-proycont.css"><iframe src="../Cont/proycont/TA01-Ramiro-Cori-ASIXc1B.pdf"></iframe></div>
-                Este es un ejemplo de texto para rellenar el área y demostrar el tono oscuro y fino del diseño.
+                <!-- changed: add the edgerunners class so only this container gets the new look -->
+                <div class="pdf-container edgerunners">
+                    <iframe src="../Cont/proycont/TA01-Ramiro-Cori-ASIXc1B.pdf" title="p1"></iframe>
+                </div>
             </div>
             <div class="box content-box" id="image-box">
                 IMAGE
