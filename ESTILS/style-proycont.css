@@ -1,0 +1,19 @@
+.pdf-card {
+  width: 300px;
+  padding: 20px;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  color: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.3);
+}
+
+.pdf-card a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 16px;
+  background: white;
+  color: #4f46e5;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
