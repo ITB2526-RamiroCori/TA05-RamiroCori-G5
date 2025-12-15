@@ -6,7 +6,7 @@
     <title>Recursos</title>
     <link rel="stylesheet" href="../ESTILS/style-proyect.css">
 
-    <!-- updated: estilos locales que solo afectan al #text-box y al .pdf-container -->
+    <!-- updated: estilos locales que solo afectan al #text-box i al .pdf-container -->
     <style>
       /* ...affects only this page region; minimal and safe */
       #text-box {
@@ -31,6 +31,7 @@
         overflow: hidden;
         box-shadow: 0 6px 18px rgba(0,0,0,0.05);
         display: block;
+        position: relative;
       }
 
       /* iframe must occupy all of the container */
@@ -46,7 +47,8 @@
       #text-box .pdf-container.edgerunners {
         background: linear-gradient(180deg, #0b0b10 0%, #130615 60%); /* dark base */
         border-radius: 10px;
-        padding: 10px; /* inner frame padding */
+        /* removed padding so iframe and content start at the very top */
+        padding: 0;
         box-shadow:
           0 10px 30px rgba(0,0,0,0.6),
           0 0 24px rgba(255,40,100,0.06); /* soft neon halo */
@@ -55,13 +57,13 @@
         overflow: hidden;
       }
 
-      /* thin neon top accent */
+      /* thin neon top accent (kept small so it doesn't add visible spacing) */
       #text-box .pdf-container.edgerunners::before {
         content: "";
         position: absolute;
-        left: -10%;
-        top: 6px;
-        width: 120%;
+        left: 0;
+        top: 2px;               /* very close to top, no extra spacing */
+        width: 100%;
         height: 3px;
         background: linear-gradient(90deg, rgba(255,31,122,0.95), rgba(255,183,107,0.9), rgba(92,246,255,0.7));
         filter: blur(6px);
@@ -89,6 +91,19 @@
         background: transparent;
       }
 
+      /* white text element inside the container, positioned absolutely so it doesn't create layout gap */
+      #text-box .pdf-container.edgerunners .blanco {
+        position: absolute;
+        top: 10px;
+        left: 12px;
+        margin: 0;
+        color: #ffffff;
+        font-weight: 600;
+        z-index: 3;
+        pointer-events: none;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+      }
+
       /* accent glow on hover (subtle) */
       #text-box .pdf-container.edgerunners:hover {
         box-shadow:
@@ -103,7 +118,7 @@
       @media (max-width: 900px) {
         #text-box { min-height: 480px; padding: 8px; } /* was 320px -> kept a comfortable mobile height */
         #text-box .pdf-container { min-height: 320px; }
-        #text-box .pdf-container.edgerunners::before { top: 4px; height: 2px; }
+        #text-box .pdf-container.edgerunners::before { top: 2px; height: 2px; }
       }
     </style>
 </head>
@@ -111,7 +126,7 @@
     <div class="page-container">
 
         <div class="box" id="title">
-            TITLE
+            <p>Google Suite</p>
         </div>
 
         <div class="box" id="documentacio">
@@ -120,19 +135,19 @@
 
         <div class="content-area">
             <div class="box content-box" id="text-box">
-                <br><br>
                 <!-- changed: add the edgerunners class so only this container gets the new look -->
                 <div class="pdf-container edgerunners">
                     <iframe src="../Cont/proycont/TA01-Ramiro-Cori-ASIXc1B.pdf" title="p1"></iframe>
                 </div>
+
             </div>
             <div class="box content-box" id="image-box">
                 IMAGE
             </div>
         </div>
-
         <div class="box" id="footer">
-            <a href ="../index.html">Ramiro-Cori:INS ITB</a>
+
+            <a href ="../index.html"><p>Ramiro-Cori:INS ITB</p></a>
         </div>
 
     </div>
