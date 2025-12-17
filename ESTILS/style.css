@@ -119,19 +119,21 @@ main {
 #contenedor-imagen {
     /* keep visual separation but avoid side borders and prevent overflow from the image */
     box-sizing: border-box;      /* ensure padding counted inside width */
-    padding: 8px;
+    padding: 0;                 /* removed white padding so image sits flush */
     border-top: 1px solid var(--accent-border);    /* keep subtle top border */
     border-bottom: 1px solid var(--accent-border); /* keep subtle bottom border */
     border-left: none;  /* remove left side border that looked feo */
     border-right: none; /* remove right side border that looked feo */
-    overflow: hidden;   /* prevent child img from overflowing and stretching the box */
+    overflow: visible;   /* allow decorative shadow to be visible outside the box */
     margin-bottom: 12px;
+    background: transparent; /* ensure no white background behind the image */
 }
 
 /* La sección clave para la imagen */
 #imagen-principal {
     /* ...existing declarations... */
     height: 420px; /* increased to make image prominent and fit wide page */
+    background: transparent;    /* no fondo blanco en el contenedor */
     background-size: cover;
     background-position: center;
     display: flex;
@@ -140,8 +142,11 @@ main {
     color: var(--text-color);
     text-shadow: none;
     box-sizing: border-box; /* avoid unexpected expansion from children */
-    overflow: hidden;       /* clip any overflow and keep borders steady */
+    overflow: visible;       /* allow drop-shadow to render outside */
     position: relative;     /* ADDED: allow decorative overlays without affecting flow */
+    border-radius: 8px;     /* slight rounding so shadow looks nicer */
+    /* keep container visually neutral; image will provide the shadow (drop-shadow) */
+    box-shadow: none;
 }
 
 /* gradient overlays to give a subtle red vignette towards the sides */
@@ -184,8 +189,20 @@ main {
     object-fit: cover;     /* keep aspect, crop if needed */
     margin: 0;
     position: relative;    /* sit below overlays */
-    z-index: 1;
-    border-radius: 0; /* keep clean edges; change if you want rounded corners */
+    z-index: 2;
+    border-radius: inherit; /* match container rounding exactly to avoid white corners */
+    background: transparent; /* ensure no background color behind image */
+    /* no shadow: keep image clean and neutral */
+    filter: none;
+    transition: none;
+}
+
+/* gentle hover lift for interactivity (optional but pleasant) */
+#imagen-principal img:hover {
+    transform: translateY(-6px) scale(1.01);
+    filter:
+      drop-shadow(0 28px 60px rgba(0,0,0,0.28))
+      drop-shadow(0 10px 22px rgba(0,0,0,0.12));
 }
 
 /* --- Destacados / Proyectos --- */
@@ -204,7 +221,7 @@ main {
 
 #contenedor-proyectos {
     display: flex;
-    gap: 12px;        /* slightly larger gap for balance on wider layout */
+    gap: 16px;        /* slightly larger gap for balance on wider layout */
     flex-wrap: wrap;
 }
 
@@ -295,4 +312,106 @@ footer a {
     background: transparent;
     margin: 0;
     font-size: 1.4em;
+}
+
+/* Disable clicks and pointer interaction for the hero image link only */
+#imagen-principal > a {
+    pointer-events: none;   /* prevents mouse clicks */
+    cursor: default;        /* show normal cursor, not pointer */
+    user-select: none;      /* avoid accidental selection */
+    outline: none;          /* ensure no focus outline if somehow focused */
+}
+
+/* also ensure the image itself doesn't suggest interaction */
+#imagen-principal img {
+    pointer-events: none;
+    cursor: default;
+}
+
+/* Subtle reddish line above the "DESTACADOS" heading */
+#destacados {
+  position: relative; /* allow absolute pseudo-element inside */
+}
+
+#destacados::before {
+  content: "";
+  position: absolute;
+  top: 6px;                 /* sits in the existing top padding area, above the h3 */
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg,
+    rgba(220,38,38,0.26) 0%,
+    rgba(220,38,38,0.18) 50%,
+    rgba(220,38,38,0.12) 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* make the line slightly thinner on very small screens */
+@media (max-width: 480px) {
+  #destacados::before {
+    left: 8%;
+    right: 8%;
+    height: 2px;
+  }
+}
+
+/* Slightly soften any remaining grey borders to the subtle red accent */
+#menu-nav ul,
+#destacados hr,
+#contenedor-imagen {
+    border-color: var(--accent-border);
+}
+
+/* Make overlay heading on the hero image black and without background */
+#imagen-principal h2 {
+    color: var(--text-color);
+    background: transparent;
+    margin: 0;
+    font-size: 1.4em;
+}
+
+/* Disable clicks and pointer interaction for the hero image link only */
+#imagen-principal > a {
+    pointer-events: none;   /* prevents mouse clicks */
+    cursor: default;        /* show normal cursor, not pointer */
+    user-select: none;      /* avoid accidental selection */
+    outline: none;          /* ensure no focus outline if somehow focused */
+}
+
+/* also ensure the image itself doesn't suggest interaction */
+#imagen-principal img {
+    pointer-events: none;
+    cursor: default;
+}
+
+/* Subtle invisible thin divider between stacked blocks in header and main.
+   Uses a 1px faint line (very low opacity) plus small spacing so things don't look glued. */
+header > * + *,
+main > * + * {
+  position: relative;
+  margin-top: 12px;    /* create vertical gap */
+  padding-top: 10px;   /* space for the divider to sit */
+}
+
+header > * + *::before,
+main > * + *::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: rgba(0,0,0,0.03); /* very faint "invisible" line */
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Keep inner content above the divider */
+header > * + * > *,
+main > * + * > * {
+  position: relative;
+  z-index: 2;
 }

@@ -22,12 +22,15 @@
             </ul>
         </nav>
     </header>
-
     <main>
+
         <div id="contenedor-imagen">
-            <div id="imagen-principal">
-                <!-- Replaced placeholder text with the actual image, clickable to open the file -->
-                <a href="Cont/indeximg/img.png">
+            <!-- Add a CSS variable with the image URL and a helper span for the blurred colored shadow.
+                 The span is positioned absolutely and will be styled from CSS; it does not add extra space. -->
+            <div id="imagen-principal" class="ray-trace" style="--img-url: url('Cont/indeximg/img.png')">
+                <span class="img-trace" aria-hidden="true"></span>
+                <!-- Imagen no clicable: tabindex="-1" para que no entre en el tab, CSS la desactiva -->
+                <a href="Cont/indeximg/img.png" tabindex="-1" aria-hidden="true">
                     <img src="Cont/indeximg/img.png" alt="Imagen principal">
                 </a>
             </div>
@@ -54,7 +57,7 @@
     </main>
 
     <footer>
-        <center><p><a href ="index.html">&copy;ACTUAL: INS ITB</a></p></center>
+        <center><p><a href ="index.html">ACTUAL: INS ITB</a></p></center>
     </footer>
 
 </body>
