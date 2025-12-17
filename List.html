@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Índex</title>
     <link rel="stylesheet" href="ESTILS/style-List.css">
+    <style>
+        /* keep the list page image area consistent with index (no side borders) */
+        #imagen-principal, .imagen-container {
+            box-sizing: border-box;
+            border-left: none;
+            border-right: none;
+            overflow: hidden;
+        }
+        .imagen-container .full-width-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
 

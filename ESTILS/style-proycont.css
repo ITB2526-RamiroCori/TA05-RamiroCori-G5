@@ -11,7 +11,10 @@
   height: 100%;
   min-height: 480px;            /* ajustable según layout */
   background: var(--bg);
-  border: 1px solid var(--accent-red-very-light);
+  /* keep subtle top/bottom border only (no side borders like index) */
+  box-sizing: border-box;
+  border-top: 1px solid var(--accent-red-very-light);
+  border-bottom: 1px solid var(--accent-red-very-light);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0,0,0,0.06);

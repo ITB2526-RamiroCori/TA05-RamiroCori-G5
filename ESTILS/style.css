@@ -117,24 +117,75 @@ main {
 }
 
 #contenedor-imagen {
-    border: 1px solid var(--accent-border);
+    /* keep visual separation but avoid side borders and prevent overflow from the image */
+    box-sizing: border-box;      /* ensure padding counted inside width */
     padding: 8px;
+    border-top: 1px solid var(--accent-border);    /* keep subtle top border */
+    border-bottom: 1px solid var(--accent-border); /* keep subtle bottom border */
+    border-left: none;  /* remove left side border that looked feo */
+    border-right: none; /* remove right side border that looked feo */
+    overflow: hidden;   /* prevent child img from overflowing and stretching the box */
     margin-bottom: 12px;
 }
 
 /* La sección clave para la imagen */
 #imagen-principal {
+    /* ...existing declarations... */
     height: 420px; /* increased to make image prominent and fit wide page */
-    background-image: url('placeholder-imagen.jpg'); /* <<-- ESTA ES LA IMAGEN QUE PUEDES CAMBIAR */
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* Make overlay text black (user requested black text) and remove heavy text shadow */
     color: var(--text-color);
     text-shadow: none;
+    box-sizing: border-box; /* avoid unexpected expansion from children */
+    overflow: hidden;       /* clip any overflow and keep borders steady */
+    position: relative;     /* ADDED: allow decorative overlays without affecting flow */
+}
+
+/* gradient overlays to give a subtle red vignette towards the sides */
+#imagen-principal::before,
+#imagen-principal::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 12%;                 /* width of the side gradient; adjust to taste */
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: overlay;     /* blends the tint with the image naturally */
+  opacity: 0.95;
+}
+
+/* left -> soft red fading to transparent toward center */
+#imagen-principal::before {
+  left: 0;
+  background: linear-gradient(90deg,
+    rgba(220,38,38,0.22) 0%,
+    rgba(220,38,38,0.12) 30%,
+    rgba(255,255,255,0.00) 100%);
+}
+
+/* right -> mirrored */
+#imagen-principal::after {
+  right: 0;
+  background: linear-gradient(270deg,
+    rgba(220,38,38,0.22) 0%,
+    rgba(220,38,38,0.12) 30%,
+    rgba(255,255,255,0.00) 100%);
+}
+
+/* NEW / adjusted: ensure the inserted img fills the container without expanding it */
+#imagen-principal img {
+    display: block;
+    width: 100%;           /* fill the container so overlays align at edges */
+    height: 100%;
+    object-fit: cover;     /* keep aspect, crop if needed */
+    margin: 0;
+    position: relative;    /* sit below overlays */
+    z-index: 1;
+    border-radius: 0; /* keep clean edges; change if you want rounded corners */
 }
 
 /* --- Destacados / Proyectos --- */

@@ -26,7 +26,10 @@
         min-height: 0;  /* allow flex child to shrink correctly */
         width: 100%;
         background: #fff;
-        border: 1px solid rgba(220,38,38,0.06);
+        /* remove left/right borders to match index; keep subtle top/bottom */
+        box-sizing: border-box;
+        border-top: 1px solid rgba(220,38,38,0.06);
+        border-bottom: 1px solid rgba(220,38,38,0.06);
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 6px 18px rgba(0,0,0,0.05);
@@ -53,7 +56,9 @@
           0 10px 30px rgba(0,0,0,0.6),
           0 0 24px rgba(255,40,100,0.06); /* soft neon halo */
         position: relative;
-        border: 1px solid rgba(255,40,100,0.14);
+        /* keep only top/bottom accent, no side borders */
+        border-top: 1px solid rgba(255,40,100,0.14);
+        border-bottom: 1px solid rgba(255,40,100,0.06);
         overflow: hidden;
       }
 

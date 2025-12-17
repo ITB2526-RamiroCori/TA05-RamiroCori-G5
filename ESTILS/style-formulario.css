@@ -240,3 +240,19 @@ body {
     background-color: var(--bg-color);
     padding-top: 18px;
 }
+
+/* Make main boxes behave like index: no left/right visible borders, consistent box-sizing */
+.container,
+.wireframe-box,
+.hero-box,
+.project-box,
+.pdf-container,
+#contenedor-imagen,
+.imagen-container,
+#imagen-principal,
+.page-container {
+    box-sizing: border-box;
+    border-left: none !important;
+    border-right: none !important;
+    overflow: hidden; /* prevent children from creating side overflow */
+}
