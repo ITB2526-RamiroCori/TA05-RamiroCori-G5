@@ -40,7 +40,7 @@
             <h3>Destacados</h3>
 
             <label for="gsearch">🔍</label>
-            <input type="search" id="gsearch" name="gsearch">
+            <input type="search" id="gsearch" name="gsearch" placeholder="Search projects...">
 
             <hr>
             <div id="contenedor-proyectos">
@@ -64,6 +64,22 @@
     <footer>
         <center><p><a href ="index.html">ACTUAL: INS ITB</a></p></center>
     </footer>
+
+    <script>
+      document.getElementById('gsearch').addEventListener('input', function () {
+        const searchTerm = this.value.toLowerCase();
+        const projects = document.querySelectorAll('#contenedor-proyectos .proyecto');
+
+        projects.forEach(project => {
+          const label = project.querySelector('.project-label').textContent.toLowerCase();
+          if (label.includes(searchTerm)) {
+            project.style.display = 'block';
+          } else {
+            project.style.display = 'none';
+          }
+        });
+      });
+    </script>
 
 </body>
 </html>

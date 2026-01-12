@@ -71,3 +71,28 @@ button span {
    border-radius: 8px;
    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* Search Bar Styles */
+#gsearch {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  color: #fff;
+  background: rgba(255, 0, 0, 0.2);
+  border: 1px solid rgba(255, 0, 0, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(255, 0, 0, 0.2);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#gsearch::placeholder {
+  color: rgba(255, 0, 0, 0.6);
+}
+
+#gsearch:focus {
+  background: rgba(255, 0, 0, 0.3);
+  border-color: rgba(255, 0, 0, 0.8);
+  box-shadow: 0 6px 8px rgba(255, 0, 0, 0.3);
+}
