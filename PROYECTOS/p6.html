@@ -188,6 +188,17 @@
         box-shadow: 0 6px 18px rgba(0,0,0,0.06);
       }
 
+      /* Cambiado: nueva regla para que el logo no ocupe todo el contenedor */
+      .logo-img {
+        display: block;
+        max-width: 220px;      /* limita el ancho máximo del logo */
+        width: 70%;            /* ocupa hasta el 70% del ancho del contenedor */
+        height: auto;
+        max-height: 260px;     /* evita que crezca demasiado */
+        object-fit: contain;
+        margin: 0 auto;        /* centro horizontal */
+      }
+
       /* mobile tweaks */
       @media (max-width: 540px) {
         .demo-controls { flex-direction: column; align-items: stretch; }
@@ -236,7 +247,8 @@
             </div>
 
             <div class="box content-box" id="image-box">
-                <img src="../Cont/proycont/descarga.png" alt="">
+                <!-- Cambiado: se añadió la clase logo-img -->
+                <img src="../Cont/proycont/logojs.png" alt="" class="logo-img">
             </div>
         </div>
 
