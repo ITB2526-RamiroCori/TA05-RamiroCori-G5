@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Índex</title>
     <link rel="stylesheet" href="ESTILS/style-List.css">
+    <link rel="stylesheet" href="ESTILS/style.css">
     <style>
         /* keep the list page image area consistent with index (no side borders) */
         #imagen-principal, .imagen-container {
@@ -25,38 +26,33 @@
 
     <header id="index">
         <nav>
-            <h1>INDEX</h1>
+            <h1>Resources</h1>
         </nav>
     </header>
 
-    ---
-
     <main id="imagen-principal">
 
         <div class="imagen-container">
-            <h2>IMAGEN</h2>
-
+            <h2><a href="List.html">
+                <img src="Cont/indexed/indexinicio.jpg" alt="">
+            </a></h2>
         </div>
+
     </main>
 
-    <main id="imagen-principal">
+    <!-- Insertado aquí (debajo de la imagen/main) -->
+    <div class="info-block" aria-label="Información breve">
+      <p>Information about selected content within the current working context (which may differ in other environments). This information is designed to be adaptable to different contexts and applicable to a variety of future scenarios, providing flexible responses to potential issues across other platforms, workflows, or professional settings.</p>
+    </div>
 
-        <div class="imagen-container">
-            <p>Information about selected content within the current working context (which may differ in other environments). This information is designed to be adaptable to different contexts and applicable to a variety of future scenarios, providing flexible responses to potential issues across other platforms, workflows, or professional settings.</p>
-
-        </div>
-    </main>
-
-    ---
 
     <section id="proyectos">
-        <h3>Recursos</h3>
+        <h3>MDS</h3>
 
         <div class="proyectos-lista">
 
             <article class="proyecto-card">
-                <h4><a href="PROYECTOS/p1.html">Projecte 1</a></h4>
-
+                <h4><a href="PROYECTOS/p1.html">Google Suite</a></h4>
                 </article>
 
             <article class="proyecto-card">
@@ -78,12 +74,32 @@
         </div>
     </section>
 
-    ---
+
+    <section id="proyectos">
+        <h3>BBDD</h3>
+
+        <div class="proyectos-lista">
+
+            <article class="proyecto-card">
+                <h4><a href="PROYECTOS/p1.html">Projecte 1</a></h4>
+            </article>
+    </section>
+
 
     <footer>
-        <center><a href ="index.html">&copy;ACTUAL: INS ITB</a></center>
     </footer>
 
+    <div class="button-wrap">
+      <button>
+        <span><a href ="index.html">ITB</a></span>
+      </button>
+      <div class="button-shadow"></div>
+    </div>
+
+    <!-- Background: ocultado para evitar puntos negros -->
+    <svg style="position: absolute; width: 100%; height: 100%; z-index: 0; display: none;" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- contenido del SVG ocultado para evitar los puntos negros -->
+    </svg>
 
 
 
