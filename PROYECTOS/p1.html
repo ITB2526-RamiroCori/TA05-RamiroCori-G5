@@ -14,55 +14,42 @@
         flex-direction: column;
         gap: 12px;
         /* increased vertical space so the text/PDF area is longer for easier reading */
-        min-height: 700px;        /* was 480px -> increased to 700px */
+        min-height: 0;        /* permitir que el tamaño real venga del .pdf-container */
         box-sizing: border-box;
         padding: 12px;
-        overflow: auto;           /* allow internal scrolling if content exceeds available space */
+        overflow: visible;    /* que la moldura muestre el iframe completo */
       }
 
-      /* base pdf container (kept neutral) */
+      /* Base neutral para el contenedor PDF */
       #text-box .pdf-container {
-        flex: 1 1 auto; /* fill remaining vertical space */
-        min-height: 0;  /* allow flex child to shrink correctly */
         width: 100%;
         background: #fff;
-        /* remove left/right borders to match index; keep subtle top/bottom */
         box-sizing: border-box;
         border-top: 1px solid rgba(220,38,38,0.06);
         border-bottom: 1px solid rgba(220,38,38,0.06);
         border-radius: 8px;
-        overflow: hidden;
         box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-        display: block;
         position: relative;
+        overflow: hidden; /* evitar que se vea fondo oscuro fuera del iframe */
       }
 
-      /* iframe must occupy all of the container */
-      #text-box .pdf-container iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        display: block;
-        background: #fff;
-      }
-
-      /* --- EDGERUNNERS VARIANT: apply only when the container has .edgerunners --- */
+      /* --- EDGERUNNERS VARIANT: now with explicit height so iframe fills exactly --- */
       #text-box .pdf-container.edgerunners {
-        background: linear-gradient(180deg, #0b0b10 0%, #130615 60%); /* dark base */
+        background: linear-gradient(180deg, #0b0b10 0%, #130615 60%);
         border-radius: 10px;
-        /* removed padding so iframe and content start at the very top */
-        padding: 0;
+        /* altura controlada por viewport: suficiente en escritorio, responsiva en móvil */
+        height: min(72vh, 820px);
+        max-height: 820px;
+        padding: 12px; /* moldura alrededor del "papel" blanco */
+        overflow: hidden; /* el iframe ocupa todo el área interior y gestiona su propio scroll */
         box-shadow:
           0 10px 30px rgba(0,0,0,0.6),
-          0 0 24px rgba(255,40,100,0.06); /* soft neon halo */
-        position: relative;
-        /* keep only top/bottom accent, no side borders */
+          0 0 24px rgba(255,40,100,0.06);
         border-top: 1px solid rgba(255,40,100,0.14);
         border-bottom: 1px solid rgba(255,40,100,0.06);
-        overflow: hidden;
       }
 
-      /* thin neon top accent (kept small so it doesn't add visible spacing) */
+      /* top accent */
       #text-box .pdf-container.edgerunners::before {
         content: "";
         position: absolute;
@@ -86,14 +73,24 @@
         pointer-events: none;
       }
 
-      /* iframe inside edgerunners: keep full size and add rounded inner corner */
+      /* iframe: ocupar TODO el espacio interior, fondo blanco para evitar franjas negras */
       #text-box .pdf-container.edgerunners iframe {
         width: 100%;
         height: 100%;
         border: none;
         display: block;
         border-radius: 6px;
-        background: transparent;
+        background: #fff !important;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      }
+
+      /* Responsive: reducir altura en pantallas pequeñas */
+      @media (max-width: 900px) {
+        #text-box .pdf-container.edgerunners {
+          height: 56vh;
+          max-height: 640px;
+          padding: 10px;
+        }
       }
 
       /* white text element inside the container, positioned absolutely so it doesn't create layout gap */

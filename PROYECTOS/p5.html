@@ -13,17 +13,14 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
-        /* increased vertical space so the text/PDF area is longer for easier reading */
-        min-height: 700px;        /* was 480px -> increased to 700px */
+        min-height: 0;
         box-sizing: border-box;
         padding: 12px;
-        overflow: auto;           /* allow internal scrolling if content exceeds available space */
+        overflow: visible;
       }
 
       /* base pdf container (kept neutral) */
       #text-box .pdf-container {
-        flex: 1 1 auto; /* fill remaining vertical space */
-        min-height: 0;  /* allow flex child to shrink correctly */
         width: 100%;
         background: #fff;
         /* remove left/right borders to match index; keep subtle top/bottom */
@@ -31,35 +28,25 @@
         border-top: 1px solid rgba(220,38,38,0.06);
         border-bottom: 1px solid rgba(220,38,38,0.06);
         border-radius: 8px;
-        overflow: hidden;
         box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-        display: block;
         position: relative;
-      }
-
-      /* iframe must occupy all of the container */
-      #text-box .pdf-container iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        display: block;
-        background: #fff;
+        overflow: hidden;
       }
 
       /* --- EDGERUNNERS VARIANT: apply only when the container has .edgerunners --- */
       #text-box .pdf-container.edgerunners {
         background: linear-gradient(180deg, #0b0b10 0%, #130615 60%); /* dark base */
         border-radius: 10px;
-        /* removed padding so iframe and content start at the very top */
-        padding: 0;
+        height: min(72vh, 820px);
+        max-height: 820px;
+        padding: 12px;
+        overflow: hidden;
         box-shadow:
           0 10px 30px rgba(0,0,0,0.6),
           0 0 24px rgba(255,40,100,0.06); /* soft neon halo */
-        position: relative;
-        /* keep only top/bottom accent, no side borders */
         border-top: 1px solid rgba(255,40,100,0.14);
         border-bottom: 1px solid rgba(255,40,100,0.06);
-        overflow: hidden;
+        position: relative;
       }
 
       /* thin neon top accent (kept small so it doesn't add visible spacing) */
@@ -93,7 +80,8 @@
         border: none;
         display: block;
         border-radius: 6px;
-        background: transparent;
+        background: #fff !important;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.06);
       }
 
       /* white text element inside the container, positioned absolutely so it doesn't create layout gap */
@@ -146,13 +134,20 @@
         .content-area { gap: 12px; padding: 12px; }
         #text-box { min-height: 420px; }
       }
+      @media (max-width: 900px) {
+        #text-box .pdf-container.edgerunners {
+          height: 56vh;
+          max-height: 640px;
+          padding: 10px;
+        }
+      }
     </style>
 </head>
 <body>
     <div class="page-container">
 
         <div class="box" id="title">
-            <p>Google Suite</p>
+            <p>Workbench</p>
         </div>
 
         <div class="box" id="documentacio">
