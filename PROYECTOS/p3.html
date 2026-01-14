@@ -95,6 +95,32 @@
         #text-box { order: 1; }
         .page-container { padding: 12px; }
       }
+
+      /* Evita que la imagen salga de su recuadro y la centra */
+      #image-box {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* asegura que el recuadro no colapse si la imagen es muy pequeña */
+        min-height: 180px;
+      }
+
+      /* La imagen se adapta al recuadro sin desbordar */
+      #image-box img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain; /* usar 'cover' si prefieres recortar en lugar de mostrar todo */
+        display: block;
+      }
+
+      @media (max-width: 900px) {
+        /* en móvil la imagen ocupa el ancho disponible y mantiene proporción */
+        #image-box { min-height: 140px; }
+        #image-box img { width: 100%; height: auto; }
+      }
     </style>
 </head>
 <body>
@@ -117,7 +143,7 @@
 
             </div>
             <div class="box content-box" id="image-box">
-                IMAGE
+                <img src="../Cont/proycont/machinelearning.jpg" alt="Machine Learning">
             </div>
         </div>
         <div class="box" id="footer">
