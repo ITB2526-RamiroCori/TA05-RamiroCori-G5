@@ -119,11 +119,15 @@
         transition: box-shadow .25s ease, transform .25s ease;
       }
 
-      /* responsive adjustments */
+      /* Layout helper: two-column content area -> stack on small screens */
+      .page-container { max-width: 1200px; margin: 0 auto; padding: 16px; box-sizing: border-box; }
+      .content-area { display: grid; grid-template-columns: 1fr 360px; gap: 16px; align-items: start; }
+
       @media (max-width: 900px) {
-        #text-box { min-height: 480px; padding: 8px; } /* was 320px -> kept a comfortable mobile height */
-        #text-box .pdf-container { min-height: 320px; }
-        #text-box .pdf-container.edgerunners::before { top: 2px; height: 2px; }
+        .content-area { grid-template-columns: 1fr; }
+        #image-box { order: 2; }
+        #text-box { order: 1; }
+        .page-container { padding: 12px; }
       }
     </style>
 </head>

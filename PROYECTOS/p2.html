@@ -132,8 +132,15 @@
         object-fit: contain;
       }
 
-      /* responsive adjustments */
+      /* layout adjustments */
+      .page-container { max-width: 1200px; margin: 0 auto; padding: 16px; box-sizing: border-box; }
+      .content-area { display: grid; grid-template-columns: 1fr 360px; gap: 16px; align-items: start; }
+
       @media (max-width: 900px) {
+        .content-area { grid-template-columns: 1fr; }
+        #image-box { order: 2; }
+        #text-box { order: 1; }
+        .page-container { padding: 12px; }
         #text-box { min-height: 480px; padding: 8px; } /* was 320px -> kept a comfortable mobile height */
         #text-box .pdf-container { min-height: 320px; }
         #text-box .pdf-container.edgerunners::before { top: 2px; height: 2px; }

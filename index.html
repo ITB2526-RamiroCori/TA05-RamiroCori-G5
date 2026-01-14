@@ -7,6 +7,43 @@
     <title>Present</title>
     <link rel="icon" type="png" href="Cont/logo/logo.png">
 
+    <style>
+        /* Responsive helpers: no rompen estilos existentes, solo adaptan layout */
+        :root { --gap: 12px; }
+
+        /* Make projects grid adapt */
+        #contenedor-proyectos {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+          gap: var(--gap);
+          align-items: start;
+        }
+        .proyecto { width: 100%; box-sizing: border-box; }
+        .proyecto a { display: block; text-decoration: none; color: inherit; }
+        .project-thumb { width: 100%; height: auto; display: block; object-fit: cover; border-radius: 8px; }
+
+        /* Ensure main image doesn't overflow */
+        #imagen-principal img { width: 100%; height: auto; object-fit: cover; display: block; }
+
+        /* Button wrap: keep in flow on desktop, float in mobile */
+        @media (max-width: 700px) {
+          .button-wrap {
+            position: fixed;
+            right: 14px;
+            bottom: 14px;
+            z-index: 9999;
+            pointer-events: auto;
+          }
+          /* compact input */
+          #gsearch { width: 100%; box-sizing: border-box; margin-bottom: 10px; }
+          #destacados { padding: 12px; }
+        }
+
+        @media (max-width: 420px) {
+          #contenedor-proyectos { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+          .project-label { font-size: 0.9rem; }
+        }
+      </style>
 </head>
 <body>
 

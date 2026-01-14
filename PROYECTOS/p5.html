@@ -132,11 +132,19 @@
         object-fit: contain;
       }
 
-      /* responsive adjustments */
-      @media (max-width: 900px) {
-        #text-box { min-height: 480px; padding: 8px; } /* was 320px -> kept a comfortable mobile height */
-        #text-box .pdf-container { min-height: 320px; }
-        #text-box .pdf-container.edgerunners::before { top: 2px; height: 2px; }
+      /* layout and responsive adjustments */
+      .page-container { max-width: 1200px; margin: 0 auto; padding: 16px; box-sizing: border-box; }
+      .content-area { display: grid; grid-template-columns: 1fr 420px; gap: 18px; align-items: start; }
+      #image-box img { display: block; width: 100%; height: auto; object-fit: contain; }
+
+      @media (max-width: 1000px) {
+        .content-area { grid-template-columns: 1fr; }
+        #image-box { order: 2; }
+        #text-box { order: 1; }
+      }
+      @media (max-width: 540px) {
+        .content-area { gap: 12px; padding: 12px; }
+        #text-box { min-height: 420px; }
       }
     </style>
 </head>

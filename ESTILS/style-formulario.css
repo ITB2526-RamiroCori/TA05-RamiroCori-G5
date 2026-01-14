@@ -256,3 +256,45 @@ body {
     border-right: none !important;
     overflow: hidden; /* prevent children from creating side overflow */
 }
+
+@media (max-width: 800px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+    height: auto;
+    gap: 10px;
+  }
+
+  .header-buttons {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .header-buttons .btn { padding: 8px 12px; flex: 1 1 auto; text-align: center; }
+
+  .container { padding: 12px !important; }
+
+  /* Make form fields stack and be full width on small screens */
+  form .form-group, .dades_form div, .dades_form label {
+    display: block;
+    width: 100% !important;
+  }
+
+  input[type="text"], input[type="email"], select, textarea {
+    width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .btn { width: 100%; box-sizing: border-box; }
+}
+
+/* very small screens */
+@media (max-width: 420px) {
+  .navbar { padding: 10px; }
+  .logo-text { font-size: 16px; }
+  .submit-box { font-size: 14px; }
+}
